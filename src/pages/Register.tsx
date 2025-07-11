@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import SocialLogin from "../share/SocialLogin";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useContext } from "react";
@@ -9,19 +9,21 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser }: any = useContext(AuthContext);
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data: any) => {
     createUser(data.email, data.password)
       .then((res: any) => {
         if (res?.user) {
           Swal.fire({
-            position: "top-end",
+            position: "top-center",
             icon: "success",
             title: "Registration Successful!",
             showConfirmButton: false,
             timer: 1500,
           });
         }
+        navigate("/");
       })
       .catch((error: any) => {
         Swal.fire({

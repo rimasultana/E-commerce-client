@@ -1,7 +1,40 @@
-import { Link } from "react-router";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Link, useNavigate } from "react-router";
 import SocialLogin from "../share/SocialLogin";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useForm, type SubmitHandler } from "react-hook-form";
 
 const Login = () => {
+  const { loginUser }:any = useContext(AuthContext);
+  const navigate = useNavigate()
+  const { register, handleSubmit } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data: any) => {
+    loginUser(data.email, data.password)
+      .then((res: any) => {
+        if (res?.user) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Login Successful!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+        navigate('/')
+      })
+      .catch((error: any) => {
+        Swal.fire({
+          position: "top-center",
+          icon: "error",
+          title: "Login Failed!",
+          text: error.message,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+  };
   return (
     <div>
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-200 flex items-center justify-center px-4">
@@ -14,12 +47,13 @@ const Login = () => {
               Please login to your account
             </p>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <label className="label">
                   <span className="label-text font-medium">Email</span>
                 </label>
                 <input
+                {...register('email')}
                   type="email"
                   placeholder="example@email.com"
                   className="input input-bordered w-full"
@@ -31,6 +65,7 @@ const Login = () => {
                   <span className="label-text font-medium">Password</span>
                 </label>
                 <input
+                {...register("password")}
                   type="password"
                   placeholder="••••••••"
                   className="input input-bordered w-full"
