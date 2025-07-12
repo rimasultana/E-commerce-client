@@ -36,7 +36,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
+    <div className="sticky top-0 z-50 bg-white shadow-md">
       <div className="navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
@@ -73,7 +73,11 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
-            <button tabIndex={0} role="button" className="btn m-1 border-purple-800">
+            <button
+              tabIndex={0}
+              role="button"
+              className="btn m-1 border-2  border-purple-800"
+            >
               Join Now
             </button>
             <ul
@@ -81,10 +85,14 @@ const Navbar = () => {
               className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to={"/login"}>Login</Link>
+                <Link to={"/login"} className="text-purple-600">
+                  Login
+                </Link>
               </li>
               <li>
-                <Link to={"/register"}>Register</Link>
+                <Link to={"/register"} className="text-purple-600">
+                  Register
+                </Link>
               </li>
             </ul>
           </div>
