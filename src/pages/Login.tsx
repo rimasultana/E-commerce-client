@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 import { useForm, type SubmitHandler } from "react-hook-form";
 
 const Login = () => {
-  const { loginUser }:any = useContext(AuthContext);
-  const navigate = useNavigate()
+  const { loginUser }: any = useContext(AuthContext);
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data: any) => {
     loginUser(data.email, data.password)
@@ -22,7 +22,7 @@ const Login = () => {
             timer: 1500,
           });
         }
-        navigate('/')
+        navigate("/");
       })
       .catch((error: any) => {
         Swal.fire({
@@ -53,7 +53,7 @@ const Login = () => {
                   <span className="label-text font-medium">Email</span>
                 </label>
                 <input
-                {...register('email')}
+                  {...register("email")}
                   type="email"
                   placeholder="example@email.com"
                   className="input input-bordered w-full"
@@ -65,7 +65,7 @@ const Login = () => {
                   <span className="label-text font-medium">Password</span>
                 </label>
                 <input
-                {...register("password")}
+                  {...register("password")}
                   type="password"
                   placeholder="••••••••"
                   className="input input-bordered w-full"
@@ -89,7 +89,6 @@ const Login = () => {
                 Login
               </button>
               <SocialLogin />
-
               <p className="text-center text-sm text-gray-600 mt-4">
                 Don’t have an account?
                 <Link

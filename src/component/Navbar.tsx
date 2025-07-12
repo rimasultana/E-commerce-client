@@ -64,14 +64,16 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">E-commerce</a>
+          <a className="btn btn-ghost sm:text-[12px] lg:text-xl text-purple-800">
+            E-commerce
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
-            <button tabIndex={0} role="button" className="btn m-1">
+            <button tabIndex={0} role="button" className="btn m-1 border-purple-800">
               Join Now
             </button>
             <ul
