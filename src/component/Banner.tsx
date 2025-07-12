@@ -33,7 +33,7 @@ const Banner = () => {
               <img
                 src={image}
                 alt={`Slide ${index + 1}`}
-                className="h-full w-full object-center rounded-lg"
+                className="h-full w-full object-center rounded-lg "
               />
             </div>
           </SwiperSlide>
