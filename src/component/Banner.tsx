@@ -5,7 +5,6 @@ import img2 from "../assets/img/mosla.jpg";
 import img3 from "../assets/img/ghee340.jpg";
 import img4 from "../assets/img/green-mosala.png";
 
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
